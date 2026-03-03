@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <style>
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+      :root {
+        --primary-color: #4f46e5;
+        --primary-hover: #4338ca;
+        --bg-color: #f3f4f6;
+        --card-bg: #ffffff;
+        --text-main: #111827;
+        --border-color: #d1d5db;
+        --focus-ring: rgba(79, 70, 229, 0.2);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Pretendard",
+          -apple-system,
+          BlinkMacSystemFont,
+          system-ui,
+          Roboto,
+          "Helvetica Neue",
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          "Malgun Gothic",
+          sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .signup-container {
+        background: var(--card-bg);
+        padding: 3rem 3.5rem;
+        border-radius: 1.5rem;
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.05),
+          0 20px 48px rgba(0, 0, 0, 0.05),
+          0 1px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 1.85rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        color: var(--text-main);
+        letter-spacing: -0.02em;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group > label,
+      .form-group > span {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        background-color: #f9fafb;
+        transition: all 0.2s ease;
+        color: var(--text-main);
+        font-family: inherit;
+      }
+
+      select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23374151'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+        padding-right: 2.5rem;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="date"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background-color: #fff;
+        box-shadow: 0 0 0 4px var(--focus-ring);
+      }
+
+      .options-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        margin-top: 0.5rem;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        appearance: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+
+      input[type="radio"] {
+        border-radius: 50%;
+      }
+
+      input[type="checkbox"]:checked,
+      input[type="radio"]:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      input[type="checkbox"]:checked::after {
+        content: "";
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        position: absolute;
+        top: 2px;
+      }
+
+      input[type="radio"]:checked::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      input[type="checkbox"]:focus-visible,
+      input[type="radio"]:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px var(--focus-ring);
+      }
+
+      .option-item label {
+        font-size: 0.95rem;
+        color: var(--text-main);
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h1>03_회원가입</h1>
+      <!--입력 영역-->
+      <form action="/server" method="get">
+        <div class="form-wrapper">
+          <div class="form-group">
+            <label for="name">이름: </label
+            ><input type="text" name="name" id="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">이메일: </label
+            ><input type="email" name="email" id="email" />
+          </div>
+          <div class="form-group">
+            <label for="pwd">비밀번호: </label
+            ><input type="password" name="pwd" id="pwd" />
+          </div>
+          <div class="form-group">
+            <label for="birth">생년월일: </label
+            ><input type="date" name="birth" id="birth" />
+          </div>
+          <div class="form-group">
+            <span>관심분야: </span>
+            <div class="options-group">
+              <div class="option-item">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="ai"
+                  value="ai"
+                /><label for="ai">AI</label>
+              </div>
+              <div class="option-item">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="data"
+                  value="data"
+                /><label for="data">데이터</label>
+              </div>
+              <div class="option-item">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="app"
+                  value="app"
+                /><label for="app">앱</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <span>성별: </span>
+            <div class="options-group">
+              <div class="option-item">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="male"
+                /><label for="male">남</label>
+              </div>
+              <div class="option-item">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="female"
+                /><label for="female">여</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="region">거주지역</label>
+            <select name="region" id="region">
+              <option value="">선택하세요</option>
+              <option>서울</option>
+              <option>부산</option>
+              <option>대구</option>
+              <option>인천</option>
+              <option>광주</option>
+              <option>대전</option>
+              <option>울산</option>
+              <option>세종</option>
+              <option>경기</option>
+              <option>강원</option>
+              <option>충북</option>
+              <option>충남</option>
+              <option>전북</option>
+              <option>전남</option>
+              <option>경북</option>
+              <option>경남</option>
+              <option>제주</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="introduce">가입인사</label>
+            <textarea name="introduce" id="introduce"></textarea>
+          </div>
+        </div>
+        <!--버튼 영역-->
+        <div>
+          <button type="reset">초기화</button
+          ><button type="submit">전송하기</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
