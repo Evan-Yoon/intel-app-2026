@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-full max-w-md bg-gray-200 p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold flex justify-center mb-4">회원가입</h1>
+      <!--입력 영역-->
+      <form action="/server" method="get">
+        <div class="form-wrapper">
+          <div class="form-group flex items-center">
+            <label for="name" class="w-24 shrink-0">이름: </label>
+            <input
+              type="text"
+              class="flex-1 m-2 border-2 border-gray-400 rounded-lg"
+              name="name"
+              id="name"
+            />
+          </div>
+          <div class="form-group flex items-center">
+            <label for="email" class="w-24 shrink-0">이메일: </label>
+            <input
+              type="email"
+              class="flex-1 m-2 border-2 border-gray-400 rounded-lg"
+              name="email"
+              id="email"
+            />
+          </div>
+          <div class="form-group flex items-center">
+            <label for="pwd" class="w-24 shrink-0">비밀번호: </label>
+            <input
+              type="password"
+              class="flex-1 m-2 border-2 border-gray-400 rounded-lg"
+              name="pwd"
+              id="pwd"
+            />
+          </div>
+          <div class="form-group flex items-center">
+            <label for="birth" class="w-24 shrink-0">생년월일: </label>
+            <input
+              type="date"
+              class="flex-1 m-2 p-0.5 border-2 border-gray-400 rounded-lg"
+              name="birth"
+              id="birth"
+            />
+          </div>
+          <div class="form-group flex items-center">
+            <span class="w-24 shrink-0">관심분야: </span>
+            <div class="options-group flex flex-1 items-center gap-4 ml-3">
+              <div class="option-item flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="ai"
+                  value="ai"
+                /><label for="ai"><span class="mr-2">AI</span></label>
+              </div>
+              <div class="option-item flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="data"
+                  value="data"
+                /><label for="data"><span class="mr-2">데이터</span></label>
+              </div>
+              <div class="option-item flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  id="app"
+                  value="app"
+                /><label for="app">앱</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group flex items-center mt-2 mb-2">
+            <span class="w-24 shrink-0">성별: </span>
+            <div class="options-group flex flex-1 items-center gap-4 ml-3">
+              <div class="option-item flex items-center gap-1">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="male"
+                /><label for="male"><span class="mr-2">남</span></label>
+              </div>
+              <div class="option-item flex items-center gap-1">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="female"
+                /><label for="female">여</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group flex items-center">
+            <label for="region" class="w-24 shrink-0">거주지역</label>
+            <select
+              name="region"
+              id="region"
+              class="flex-1 m-2 border-2 border-gray-400 rounded-lg"
+            >
+              <option value="">선택하세요</option>
+              <option>서울</option>
+              <option>부산</option>
+              <option>대구</option>
+              <option>인천</option>
+              <option>광주</option>
+              <option>대전</option>
+              <option>울산</option>
+              <option>세종</option>
+              <option>경기</option>
+              <option>강원</option>
+              <option>충북</option>
+              <option>충남</option>
+              <option>전북</option>
+              <option>전남</option>
+              <option>경북</option>
+              <option>경남</option>
+              <option>제주</option>
+            </select>
+          </div>
+          <div class="form-group flex items-start">
+            <label for="introduce" class="w-24 shrink-0 mt-3">가입인사</label>
+            <textarea
+              name="introduce"
+              id="introduce"
+              class="flex-1 m-2 p-0.5 border-2 border-gray-400 rounded-lg min-h-[100px]"
+            ></textarea>
+          </div>
+        </div>
+        <!--버튼 영역-->
+        <div class="btn-group flex justify-center gap-2 mt-6">
+          <button
+            type="reset"
+            class="m-1 p-0.5 border-2 rounded-lg border-black"
+          >
+            초기화
+          </button>
+          <button
+            type="submit"
+            class="m-1 p-0.5 border-2 rounded-lg border-black"
+          >
+            전송하기
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
