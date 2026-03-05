@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM연습</title>
+  </head>
+  <body>
+    <h1 id="title">안녕하세요</h1>
+    <p class="content">첫 번째 설명</p>
+    <p class="content">두 번째 설명</p>
+
+    <button id="likeBtn">
+      <span id="heart">🤍</span> <span id="likeCount">0</span>
+    </button>
+
+    <button id="btn">클릭!</button>
+    <p id="result">여기에 카운트 표시</p>
+    <script>
+      const btn = document.getElementById("btn");
+      const result = document.getElementById("result");
+      console.log(result);
+      let clickCount = 0;
+      btn.addEventListener("click", () => {
+        clickCount++;
+        console.log(clickCount);
+        result.textContent = clickCount;
+        //카운트가 10 이상이면 빨간 글씨
+        if (clickCount >= 10) {
+          result.style.color = "red";
+        }
+      });
+
+      const title = document.getElementById("title");
+      console.log(title);
+      title.textContent = "hello";
+      title.style.color = "red";
+    </script>
+  </body>
+</html>
