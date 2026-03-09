@@ -1,19 +1,125 @@
+/* tailwindcss를 import하기 전에 폰트를 먼저 import 해야 합니다. */
+/* 다이나믹 서브셋을 사용하여 폰트 용량을 최소한으로 사용합니다. */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
 
 @import "tailwindcss";
 
+/* ── Theme 설정 ── */
 @theme {
-  --font-family-sans: "Pretendard", sans-serif;
-  /* 색상 테마 설정 */
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-primary-light: #eef2ff;
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-text-main: #0f172a;
-  --color-text-sub: #64748b;
-  --color-border: #e2e8f0;
-  --color-success: #10b981;
-  --color-danger: #ef4444;
-  --color-warning: #f59e0b;
+  /* 색상 */
+  /* Black / Red / White palette */
+  --color-primary-50: #1a0000;
+  --color-primary-100: #330000;
+  --color-primary-500: #e60000;
+  --color-primary-700: #ff3333;
+  --color-primary-900: #ff6666;
+  --color-accent: #ffffff;
+  --color-success: #6b7280;
+  --color-warning: #9ca3af;
+  --color-danger: #e60000;
+
+  /* Background / surface */
+  --color-bg: #000000;
+  --color-surface: #111111;
+  --color-border: #2a2a2a;
+
+  /* 폰트 */
+  --font-sans: "Pretendard", "Noto Sans KR", sans-serif;
+
+  /* 폰트 크기 */
+  --text-heading-xl: 2.5rem;
+  --text-heading-lg: 2rem;
+  --text-heading-md: 1.5rem;
+  --text-body: 1rem;
+  --text-caption: 0.75rem;
+
+  /* 간격 */
+  --spacing-72: 18rem;
+  --spacing-84: 21rem;
+  --spacing-96: 24rem;
+  --spacing-128: 32rem;
+
+  /* 모서리 둥글기 */
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  /* 그림자 */
+  --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.8);
+  --shadow-button: 0 2px 12px rgba(230, 0, 0, 0.5);
+
+  /* 브레이크포인트 (반응형 기준점) */
+  --breakpoint-sm: 640px; /* 큰 스마트폰, 작은 태블릿 */
+  --breakpoint-md: 768px; /* 일반 태블릿 (아이패드 등) */
+  --breakpoint-lg: 1024px; /* 노트북, 작은 데스크탑 */
+
+  /* 애니메이션 */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-pulse-slow: pulse-slow 3s infinite;
+}
+
+/* ── 키프레임 (theme 바깥에 선언) ── */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ── 글로벌 기본 스타일 ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: #000000;
+    color: #ffffff;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  input {
+    outline: none;
+    border: 1px solid #2a2a2a;
+    background-color: #111111;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    transition: border-color 0.2s;
+  }
+
+  input:focus {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.25);
+  }
+
+  input::placeholder {
+    color: #9ca3af;
+  }
 }
