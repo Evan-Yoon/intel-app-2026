@@ -1,10 +1,10 @@
 import React from "react";
-import TeamPage from "./pages/teampage";
+import CafeMenu from "./components/CafeMenu";
 
 function App() {
   return (
     <>
-      <TeamPage />
+      <CafeMenu />
     </>
   );
 }
