@@ -1,10 +1,10 @@
 import React from "react";
-import CafeMenu from "./components/CafeMenu";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
     <>
-      <CafeMenu />
+      <TodoList />
     </>
   );
 }
