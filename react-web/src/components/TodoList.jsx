@@ -1,23 +1,37 @@
-import React, { useState } from "react";
-import { Trash2 } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Trash2, Sun } from "lucide-react";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "할일을 엔터키로도 입력되도록", completed: true },
-    { id: 2, text: "입력 후 입력창 지우기", completed: true },
-    { id: 3, text: "입력을 안하거나 space만 있으면 입력 X", completed: true },
-    { id: 4, text: "완료된 항목만 삭제", completed: true },
-    { id: 5, text: "정말 삭제하시겠습니까?", completed: true },
-    { id: 6, text: "다시 묻지 않기", completed: true },
-    { id: 7, text: "삭제 확인창 설정 초기화", completed: true },
-    { id: 8, text: "모두 삭제", completed: false },
-    { id: 9, text: "정렬", completed: false },
-    { id: 10, text: "다크모드", completed: false },
-    { id: 11, text: "입력된 시간 추가", completed: false },
-    { id: 12, text: "내용 수정", completed: false },
-    { id: 13, text: "우선순위 추가", completed: false },
-    { id: 14, text: "드래그해서 순서 바꾸기", completed: false },
-  ]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos
+      ? JSON.parse(savedTodos)
+      : [
+          { id: 1, text: "할일을 엔터키로도 입력되도록", completed: true },
+          { id: 2, text: "입력 후 입력창 지우기", completed: true },
+          {
+            id: 3,
+            text: "입력을 안하거나 space만 있으면 입력 X",
+            completed: true,
+          },
+          { id: 4, text: "완료된 항목만 삭제", completed: true },
+          { id: 5, text: "정말 삭제하시겠습니까?", completed: true },
+          { id: 6, text: "다시 묻지 않기", completed: true },
+          { id: 7, text: "삭제 확인창 설정 초기화", completed: true },
+          { id: 8, text: "모두 삭제", completed: false },
+          { id: 9, text: "정렬", completed: false },
+          { id: 10, text: "다크모드", completed: false },
+          { id: 11, text: "입력된 시간 추가", completed: false },
+          { id: 12, text: "내용 수정", completed: false },
+          { id: 13, text: "우선순위 추가", completed: false },
+          { id: 14, text: "드래그해서 순서 바꾸기", completed: false },
+        ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   const [todoInput, setTodoInput] = useState("");
 
   // 모달 관련 상태
@@ -87,7 +101,10 @@ const TodoList = () => {
       <div className="bg-white w-full max-w-md p-8 rounded-2xl shadow-md border border-gray-200">
         {/* 헤더 */}
         <h1 className="text-3xl font-bold text-center mb-6">📝 투두리스트</h1>
-
+        {/* 다크모드 */}
+        <button onClick={() => {}}>
+          <Sun />
+        </button>
         {/* 입력창 & 버튼 */}
         <div className="flex gap-2 mb-6">
           <input
@@ -109,34 +126,12 @@ const TodoList = () => {
         {/* 할 일 목록 */}
         <ul className="max-h-[400px] overflow-y-auto pr-2">
           {todos.map((todo) => (
-            <li
+            <TodoItem
               key={todo.id}
-              className="flex items-center justify-between py-3 border-b border-gray-200"
-            >
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  className="w-5 h-5"
-                  onChange={() => handleCompleteToggle(todo.id)}
-                />
-                <span
-                  className={`text-lg ${
-                    todo.completed
-                      ? "text-gray-400 line-through"
-                      : "text-gray-700"
-                  }`}
-                >
-                  {todo.text}
-                </span>
-              </label>
-              <button
-                className="text-red-500 hover:text-red-600 p-1"
-                onClick={() => handleDeleteTodo(todo.id)}
-              >
-                <Trash2 size={20} />
-              </button>
-            </li>
+              todo={todo}
+              handleCompleteToggle={handleCompleteToggle}
+              handleDeleteTodo={handleDeleteTodo}
+            />
           ))}
         </ul>
 
