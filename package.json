@@ -3,5 +3,13 @@
     "@tailwindcss/vite": "^4.2.1",
     "readline-sync": "^1.4.10",
     "tailwindcss": "^4.2.1"
+  },
+  "scripts": {
+    "start": "cd react-web && npm run dev",
+    "server": "cd backend && uvicorn main:app --reload",
+    "dev": "concurrently \"npm run start\" \"npm run server\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

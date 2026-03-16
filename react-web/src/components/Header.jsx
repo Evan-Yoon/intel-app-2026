@@ -32,6 +32,15 @@ function Header() {
           <NavLink to="/Like" className={menuStyle}>
             좋아요
           </NavLink>
+          <NavLink to="/posts" className={menuStyle}>
+            포스트
+          </NavLink>
+          <NavLink to="/cat" className={menuStyle}>
+            고양이
+          </NavLink>
+          <NavLink to="/random-animal" className={menuStyle}>
+            랜덤 동물
+          </NavLink>
         </nav>
       </div>
     </header>
