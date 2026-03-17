@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfileCard from "./screens/ProfileCard";
+import UpdownScreen from "./screens/UpDownGameScreen";
 
 const App = () => {
-  return <ProfileCard />;
+  return <UpdownScreen />;
 };
 
 export default App;
