@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import LottieView from "lottie-react-native";
 
 const UpdownScreen = () => {
   const [input, setInput] = useState("");
@@ -95,6 +96,14 @@ const UpdownScreen = () => {
           </View>
           {/* 결과 출력 */}
           <View style={styles.resultBox}>
+            {isGameOver && (
+              <LottieView
+                source={require("../assets/animations/Streak complete.json")}
+                autoPlay
+                loop={false}
+                style={styles.lottie}
+              />
+            )}
             <Text style={styles.resultText}>{result}</Text>
           </View>
           {/* 게임 종료 시 재시작 버튼 */}
@@ -150,7 +159,8 @@ const styles = StyleSheet.create({
   resultBox: {
     backgroundColor: "#fff",
     width: "80%",
-    height: 150,
+    minHeight: 150,
+    padding: 20,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -163,9 +173,10 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   resultText: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#333",
+    textAlign: "center",
   },
   resetButton: {
     backgroundColor: "green",
@@ -179,5 +190,9 @@ const styles = StyleSheet.create({
   resetButtonText: {
     fontSize: 20,
     color: "#fff",
+  },
+  lottie: {
+    width: 150,
+    height: 150,
   },
 });
